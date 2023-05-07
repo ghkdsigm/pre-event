@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[2023]{2023} 0505_#10649_디아블로2 래더4 오픈 프로모션</title>
+    <link rel="stylesheet" href="https://m.itembay.com/resources/css/common.css" />
+    <script src="https://m.itembay.com/resources/js/jquery.min.js"></script>
+    <script src="https://m.itembay.com/resources/js/ib.publish.js"></script>
+    <style>
+        /* event common */
+        .evt_wrap {
+            position: relative;
+            text-size-adjust: none;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            padding-bottom: 0 !important;
+        }
+
+        .evt_con {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .evt_con .evtBg {
+            width: 100%;
+            pointer-events: none;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            width: 220%;
+            display: block;
+        }
+
+        .evt_wrap input {
+            margin: 0;
+            padding: 0
+        }
+
+        .evt_wrap .none {
+            width: 1px;
+            height: 1px;
+            font-size: 0;
+            line-height: 0;
+            position: absolute;
+            top: 0;
+            left: -1000%;
+            overflow: hidden
+        }
+
+        .evt_footer .evt_notice_wrap {
+            padding: 5.5556vw;
+        }
+
+        .evt_footer .tit_notice {
+            font-size: 3.3333vw;
+        }
+
+        .evt_footer .evt_list_notice {
+            margin-top: 4.1667vw
+        }
+
+        .evt_footer .evt_list_notice li {
+            position: relative;
+            line-height: 1.5;
+            padding-left: 2.0833vw;
+            font-size: 2.7778vw;
+            letter-spacing: -.5px;
+        }
+
+        .evt_footer .evt_list_notice li.bullet_none::before {
+            display: none
+        }
+
+        .evt_footer .evt_copyright {
+            padding: 2.7778vw 0 2.0833vw;
+        }
+
+        .evt_footer .evt_copyright>p {
+            font-size: 1.9444vw;
+        }
+
+        .evt_footer .evt_list_notice li {}
+
+        .evt_wrap .evt_bg {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .evt_wrap .evt_bg .bg02 {
+            padding-top: 10.9722vw;
+        }
+
+        .evt_wrap .date {
+            color: #fff;
+            font-size: 2.7778vw;
+            font-family: notoKR;
+            position: absolute;
+            top: 1%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 74%;
+            text-align: right;
+        }
+
+        .evt_wrap .date span {
+            margin-right: 1.6667vw;
+        }
+
+        .evt_wrap .date span:nth-of-type(2) {
+            margin-right: 0;
+        }
+
+        br {
+            display: block;
+            content: "";
+            margin-top: 0.1vh;
+            line-height: 190%;
+            vertical-align: top;
+        }
+    </style>
+    <script>
+        $(function () {
+            // 게임 제목
+            var title = "디아블로2 레더 4시즌"
+
+            // 접근성
+            var accessibility = "디아블로2 레더 4시즌 이벤트 참여하면 쌀먹 필수템 쏜다! 꽝 없는 100 % 당첨 이벤트 거래 완료시 하루 최대 10장까지 응모권 지급! 판매 완료 시 응모권 1장 지급 구매 완료 시 응모권 2장 지급 상품 응모하기 상품안내 수수께끼, 샤코, 자룬, 베르룬 마일리지 1천원, 500마일리지, 할인쿠폰 1천원, 할인쿠폰 500원, 파워존 1시간"
+            $('.evt_con .none').text(accessibility)
+
+            // 배경이미지
+            var bgs = [
+                "images/bg001.jpg",
+                "images/bg002.jpg",
+                "images/bg003.jpg",
+                "images/bg004.jpg"
+            ]
+            if (bgs.length >= 1) {
+                for (var i = 0; i < bgs.length; i++) {
+                    var imgs = document.createElement("img");
+                    imgs.setAttribute("src", bgs[i])
+                    imgs.setAttribute("class", "evtBg")
+                    imgs.setAttribute("alt", title + '-' + (i + 1) + '번째 배경 이미지')
+                    $('.evt_bg').append(imgs)
+                }
+            }
+
+            // 이벤트기간
+            var date = "2023.05.05 ~ 2023.06.01"
+            $('.date')[0].childNodes[1].innerText = date
+
+            // 유의사항
+            var notice = [
+                "게임$머니/아이템/기타 카테고리에서 2천원 이상 판/구매 완료 시 응모권이 지급됩니다. (1일 최대 10장)",
+                "지급되는 마일리지는 구매가능 마일리지로 즉시 지급됩니다.",
+                "할인쿠폰은 게임머니/아이템/기타 카테고리에서만 적용 가능하며, 2,000원 이상 거래 시 사용 가능합니다.", "수수께끼 (3만원), 샤코 (1만원), 자룬 (5천원),$ 베르룬 (3천원) 등 당첨 시 구매가능 마일리지로 대체 지급됩니다.",
+                "수수께끼 (3만원), 샤코 (1만원), 자룬 (5천원), 베르룬 (3천원) 등 당첨 시 구매가능 마일리지로 대체 지급됩니다.",
+                "5만원을 초과하는 경품의 경우 제세공과금 22%가 부과되며, 제세공과금 처리를 위한 신분증 사본 및 개인 정보 수집 이용 동의서 제출이 필요합니다. 당첨자에게는 이벤트 종료 후 10일 이내 회원정보에 기재된 유선번호 및 이메일로 당첨 안내가 발송됩니다.",
+                "비정상적인 참여 및 악용 시 지급된 경품 회수, 거래 정지 등 불이익이 발생할 수 있습니다.",
+                "본 이벤트는 내부 사정에 따라 사전 고지 없이 변경 또는 조기종료될 수 있습니다."
+            ]
+
+            var noticeBg = '#010101'
+            var noticeColor = "#fff"
+            if (notice.length >= 1) {
+                $('.evt_notice_wrap').css("background-color", noticeBg);
+
+                for (var i = 0; i < notice.length; i++) {
+                    var listLi = document.createElement("li")
+                    document.querySelector('.evt_list_notice').appendChild(listLi).innerText = notice[i].replace('$', '\n') //$가 있을경우 띄어쓰기로
+                    //$('.evt_list_notice').append("<li>" + li + "</li>")    
+                    $('.tit_notice strong').css("color", noticeColor);
+                    $('.evt_notice_wrap li').css("color", noticeColor);
+                    $('.evt_notice_wrap li').addClass("notices");
+                }
+                $('head').append("<style>.notices:before { content: '';position: absolute;top: 1.8056vw;left: 0;width: 0.8333vw;height: 0.8333vw;border-radius: 100%; " + 'background:' + noticeColor + "} + </style>");
+            }
+
+            // 푸터
+            var footerBg = 'gray'
+            var footerColor = "red"
+            $('.evt_copyright').css("background-color", footerBg);
+            $('.evt_copyright p').css("color", footerColor);
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- 헤더영역 -->
+        <header id="header">
+            <nav class="header_top">
+                <div class="sub_title_area">
+                    <a href="javascript:window.history.back()" class="history_back">
+                        <span class="blind">뒤로가기</span>
+                    </a>
+                    <h1 class="title_sub">
+                        <span>이벤트</span>
+                    </h1>
+                </div>
+                <div class="btn_area">
+                    <a href="javascript:;" class="btn_baytalk new"></a>
+
+                    <a href="javascript:;" class="btn_menu btn_open_pop" data-pop="pop_menu"></a>
+                </div>
+            </nav>
+        </header>
+
+        <div id="container">
+            <!-- 이벤트 컨텐츠 //시작 -->
+            <div class="evt_wrap">
+                <div class="evt_con">
+                    <div class="evt_bg">
+                    </div>
+                    <div class="none">
+                    </div>
+                    <!-- 이벤트 기간 -->
+                    <p class="date"><span>이벤트 기간</span><span></span></p>
+                </div>
+
+                <!-- 이벤트 유의사항 -->
+                <div class="evt_footer">
+                    <div class="evt_notice_wrap">
+                        <div class="tit_notice">
+                            <strong>이벤트 유의사항</strong>
+                        </div>
+                        <div>
+                            <ul class="evt_list_notice">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="evt_copyright tc">
+                        <p>&copy; itemBay Co., Ltd. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 이벤트 컨텐츠 //끝 -->
+        </div>
+    </div>
+</body>
+
+</html>
