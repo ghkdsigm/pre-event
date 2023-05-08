@@ -24,9 +24,10 @@
         .evt_footer .evt_copyright { padding: 2.7778vw 0 2.0833vw; } 
         .evt_footer .evt_copyright>p { font-size: 1.9444vw; } 
         .evt_footer .evt_list_notice li { } 
-        .evt_wrap .evt_bg { display: flex; flex-direction: column; } 
+        .evt_wrap .evt_bg { display: flex;display: -webkit-box; display: -ms-flexbox; -webkit-box-orient: vertical;
+  -ms-flex-direction: column;flex-direction: column;} 
         .evt_wrap .evt_bg .bg02 { padding-top: 10.9722vw; } 
-        .evt_wrap .date { color: #fff; font-size: 2.7778vw; font-family: notoKR; position: absolute; top: 1%; left: 50%; transform: translateX(-50%); width: 74%; text-align: right; } 
+        .evt_wrap .date { color: #fff; font-size: 2.7778vw; font-family: 'Malgun Gothic',sans-serif; position: absolute; top: 1%; left: 50%; transform: translateX(-50%); width: 74%; text-align: right; } 
         .evt_wrap .date span { margin-right: 1.6667vw; } 
         .evt_wrap .date span:nth-of-type(2) { margin-right: 0; } 
         br { display: block; content: ""; margin-top: 0.1vh; line-height: 190%; vertical-align: top; } 
@@ -38,14 +39,14 @@
         .evt_form_input { flex: 1; height: 10vw; text-align: center; color: #131313; font-size: 3.7vw; } 
         .evt_form_box input::placeholder { color: #131313; font-size:2.7vw; } 
         .evt_form_box input:-ms-input-placeholder { color: #131313; font-size:2.7vw; } 
-        .evt_form { position: absolute;top: 15.7%;left: 13%;width: 74vw;text-align: left; } 
+        .evt_form { position: absolute;top: 15.7%;left: 13%;width: 74vw;text-align: center; } 
         .evt_form_check { display: inline-flex; align-items: center; } 
         .evt_ico_check { width: 2.5vw; height: 2.5vw; box-sizing: border-box; margin-right: 1vw; background-color: #fff; border: 1px solid #260c0c; } 
         .evt_form_check input:checked ~ .evt_ico_check { background: #260c0c url('images/ico_check.png') no-repeat center; background-size: 80%; } 
         .evt_txt_check { font-size: 2vw; color: #fff; } 
-        .evt_btn_info_view { display: inline-block;background-color: #db3500;vertical-align: middle;border-radius: 2px;border: 1px solid #db3500;text-align: center;color: #fff;margin-top: -1.5vw;margin-left: 1.3vw;font-size: 1.6vw;padding: 0.7vw 1.2vw; } 
+        .evt_btn_info_view { display: inline-block;background-color: #db3500;vertical-align: middle;border-radius: 2px;border: 1px solid #db3500;text-align: center;color: #fff;margin-top: -2vw;margin-left: 1.3vw;font-size: 1.6vw;padding: 0.7vw 1.2vw; } 
         .evt_pop_wrap { display:none; position:absolute; top: 10%; left:20%; width:60%; z-index:9997 } 
-        .evt_pop_wrap .btn.close { position:absolute; right:0; top:0; width:10%; height:2% } 
+        .evt_pop_wrap .btn.close { position:absolute; right:0; top:0; width:10%; height:6vw } 
 
         .btn2 { position: absolute; width: 50vw; height: 10vw; left: 50%; margin-left: -24vw; display: block; background-color: rgba(255, 255, 255, 0); margin-bottom: 19vw;} 
         .btn2:hover { cursor: pointer; }         
@@ -115,9 +116,13 @@
 
             // 바로가기 버튼 위치 설정
             var linkUrl = "https://m.itembay.com/m/item/sell/itemSellList?iGameSeq=3954&iGameServerSeq=0&tiItemType=4"
-            if($('.evt_footer')){
+            if($('.evt_footer')){          
                 var footerHeight = $('.evt_footer')[0].offsetHeight
-                $('.btn2').css('bottom', footerHeight)      
+                $('.btn2').css('bottom', footerHeight)           
+                window.addEventListener("resize", function() {
+                    var footerHeight = $('.evt_footer')[0].offsetHeight
+                    $('.btn2').css('bottom', footerHeight)      
+                })
                 $('.btn2').attr('href', linkUrl)
             }   
 
