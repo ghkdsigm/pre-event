@@ -68,7 +68,7 @@
         .evt_btn_info_view { cursor: pointer; margin-top: -2px; margin-left: 10px; font-size: 12px; /* color: #fff; background-color: #db3500; border: 1px solid #db3500; */ border-radius: 2px; width: 70px; height: 21px; text-align: center; vertical-align: top; font-family: Malgun Gothic; } 
         .evt_pop_wrap { position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; } 
 
-        .evt_pop { width: 480px; height: 350px; background: url("images/pop_bg.jpg") no-repeat; font-family: Malgun Gothic; position: relative; } 
+        .evt_pop { width: 480px; height: 350px; background-repeat: no-repeat; font-family: Malgun Gothic; position: relative; } 
         .evt_pop_close { position: absolute; width: 47px; height: 47px; border: 0; cursor: pointer; top: 0; right: 0; } 
     
         .btnCommon { position: absolute; width: 425px; height: 85px; left: 0; right: 0; margin: auto; display: block; background-color: rgba(255, 255, 255, 0); } 
@@ -204,6 +204,8 @@
             // 전문보기 팝업
             var popupNotice = "개인정보 수집 및 이용안내 (주)아이템베이는 이벤트 진행을 위해 아래와 같이 개인 정보 수집 및  취급 업무를 하며 본 목적 외 다른 목적으로 사용되지 않습니다. 개인정보의 수집 및 이용 수집 정보: 이동전화번호 수집 목적: 게임 출시 이벤트 알림 문자발송, 상품 제공 보유 기간: 이벤트 종료 직후 1개월 간 보관 후 삭제 이에 동의하지 않는 경우 개인정보 제공을 거절할 수 있으며,  이벤트 참여가 제한됩니다."
             $('.evt_pop_wrap .blind').text(popupNotice) // 웹접근성 - 팝업
+            var popBg = "images/pop_bg.jpg"
+            $('.evt_pop').css({"background":"url("+ popBg +")"})
 
             $('.evt_btn_info_view').click(function () {
                 $('.evt_pop_wrap').removeClass('hide');
