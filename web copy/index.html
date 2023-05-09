@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="https://www.itembay.com/resources/style/Css3/common.css" />
+    <!-- 샘플 <link rel="stylesheet" type="text/css" href="resources/style/Css3/common.css" />-->
+    <link rel="stylesheet" type="text/css" href="https://www.itembay.com/resources/style/Css3/layout_v3.0.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.itembay.com/resources/style/Css3/main_v3.0.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.itembay.com/resources/style/Css3/layout20140416.css" />
+    <link type="text/css" rel="stylesheet" href="https://www.itembay.com/resources/style/Css3/style.css" />
+    <script type="text/javascript" src="https://www.itembay.com/resources/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://www.itembay.com/resources/js/jquery.alphanumeric.js"></script>
+    <script type="text/javascript" src="https://www.itembay.com/resources/js/Jss/ib_common.js"></script>
+    <!-- 상단 css 및 스크립트 파일은 헤더에 포함되어 있으므로 이벤트페이지에 삽입 x -->
+    <style>
+        /* 기본 css */
+        body { position: relative; } 
+        .evt_wrap .evt_page { min-width: 1000px; width: 1000px; margin: 0 auto; height: 100%; top: 0; } 
+        .evt_wrap .evt_con { position: absolute; top: 0; width: 1000px; height: 100%; } 
+
+        /* 배경이미지 */
+        .evt_wrap .evt_bg { min-width: 1000px; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; -ms-flex-pack: center; justify-content: center; background: #000; overflow: hidden; } 
+        .evt_wrap .evt_bg .bg01 { z-index: 10; position: relative; top: 0; transition: .3s position; } 
+        .evt_wrap .evt_bg .bg01.on { position: fixed; left: 50%; transform: translateX(-50%); } 
+        .evt_wrap .evt_bg .bg02 { margin-top: 0; } 
+        .evt_wrap .evt_bg .bg02.on { margin-top: 80px; } 
+
+        /* seo */
+        .evt_wrap .none { width: 1px; height: 1px; font-size: 0; line-height: 0; position: absolute; top: 0; left: -1000%; overflow: hidden}
+
+        /* 최상단 배너 */
+        .evt_wrap .btn_scroll { position: relative; z-index: 10; top:0; display: flex; justify-content: center; height: 80px; width: 1000px;}
+        .evt_wrap .btn_scroll.on {position: fixed;left: 50%; transform: translateX(-50%); }
+        .evt_wrap .btn_scroll a,
+        .evt_wrap .btn_scroll button {display: block;width: 100%;height: 100%;cursor: pointer; padding: 0;}
+
+        /* 이벤트 기간 */
+        .evt_wrap .date { position: relative; top: 20px; width: 680px; margin: 0 auto; text-align: right; font-family: Malgun Gothic; font-weight: 300; font-size: 14px; } 
+        .evt_wrap .date span { margin-right: 12px; } 
+
+        /* 푸터 */
+        .evt_footer { position: relative; min-width: 1000px; } 
+        .evt_footer .evt_inner { position: relative; width: 1000px; padding: 30px 0 34px; margin: 0 auto; } 
+        .evt_footer .evt_inner .tit_notice { font-family: 'Malgun Gothic', sans-serif, sans-serif; font-size: 20px; font-weight: 500; } 
+        .evt_footer .evt_inner .list_notice { margin-top: 20px; } 
+        .evt_footer .evt_inner .list_notice li { position: relative; padding-left: 10px; font-family: Malgun Gothic; font-weight: 100; font-size: 13px; text-align: left; } 
+        .evt_footer .evt_inner .list_notice li+li { margin-top: 10px; } 
+        .evt_footer .evt_inner .list_notice li.none_before::before { display: none; } 
+        .evt_footer .evt_inner .list_notice li span { display: inline-block; margin-top: 10px; } 
+        .evt_footer .evt_copyright { padding: 20px 0; text-align: center; } 
+        .evt_footer .evt_copyright p { font-family: Malgun Gothic; font-size: 12px; } 
+
+        br { display: block; content: ""; margin-top: 5px; line-height: 190%; vertical-align: top; } 
+
+        /* 응모 */
+        /* 응모권 수 */
+        .evt_wrap .apply_ticket .num_ticket {position: absolute;top: 1157px;font-family: Malgun Gothic;font-weight: 100;font-size: 24px;width: 100%;text-align: center;color: #fff;}
+        .evt_wrap .apply_ticket .num_ticket span {font-size: 64px;}
+        .evt_wrap .apply_ticket .btn_apply {position: absolute;top: 1290px;left: 50%; transform: translateX(-50%); width: 417px;height: 82px;cursor: pointer;}
+
+
+        /* 팝업 */
+        .pop_prize {z-index: 11; position: fixed;top: 50%;left: 50%; transform: translate(-50%,-50%);display: flex;flex-direction: column;align-items: center;justify-content: flex-end;padding-bottom: 150px;width: 520px;height: 480px;text-align: center;background: url("http://www.itembay.com/resources/event/2023/0505_diablo2/images/pop_prize.jpg");box-sizing: border-box;}
+        /* .pop_prize.high {background: url("");} */
+        /* .pop_prize.over {background: url("");} */
+        .pop_prize .btn_close {position: absolute;top: 24px;right: 24px;width: 49px;height: 49px;cursor: pointer;}
+        .pop_prize p {line-height: 1.2;font-family: notoKR;font-size: 36px;;margin-top: 25px;color: #fff;}
+
+        /* 팝업 - 당첨내역 */
+        .pop_list {z-index: 11; position: fixed;top: 50%;left: 50%; transform: translate(-50%,-50%);width: 520px;height: 480px;padding-top: 104px;background: url("http://www.itembay.com/resources/event/2023/0505_diablo2/images/pop_list.jpg");box-sizing: border-box;}
+        .pop_list .btn_close {position: absolute;top: 24px;right: 24px;width: 49px;height: 49px;cursor: pointer;}
+        .pop_list table {width: 400px;margin: 0 auto;text-align: center;}
+        .pop_list table td,
+        .pop_list table th {font-family: notoKR;font-size: 16px;font-weight: 300;padding: 0;}
+        .pop_list table th {height: 50px;color: #fff;background: #435c85;}
+        .pop_list table td {height: 43px;color: #fff;border-bottom: 1px solid #435c85; box-sizing: border-box;}
+        .pop_list p {font-family: notoKR;font-size: 12px;text-align: center;margin-top: 17px;color: #a1dbe6;}
+        .pop_list .change_page {display: flex;justify-content: center;margin-top: 30px;}
+        .pop_list .change_page li {position: relative;font-family: notoKR;font-size: 14px;font-weight: 300;color: #fff;}
+        .pop_list .change_page li::before {position: absolute;content: "";top: 2px;left: -7px;width: 1px;height: 14px;background: #fff;}
+        .pop_list .change_page li:first-child:before {display: none;}
+        .pop_list .change_page li + li {margin-left: 14px;}
+
+        /*팝업*/
+        .evt_inner { width: 1000px; margin: 0 auto; } 
+        .evt_box1_form { position: absolute; right: 0; left: 0; width: 640px; } 
+        .evt_form_box { overflow: hidden; } 
+        .evt_form_box input { border: 0; width: 458px; height: 85px; background: transparent; float: left; box-sizing: border-box; /* color: #131313; */ font-size: 24px; font-family: Malgun Gothic; text-align: center; padding: 0; } 
+        .evt_form_box input::placeholder { /* color: #131313; */}
+        .evt_form_box input:-ms-input-placeholder { /* color: #131313; */}
+        .evt_list_pi>li { font-family: Malgun Gothic; } 
+        .evt_list_pi>li::before { display: inline-block; width: 4px; height: 4px; vertical-align: middle; margin-right: 3px; background-color: #c21c00; content: ''; border-radius: 50%; } 
+        .evt_list_pi>li:first-child::before { background-color: #616781; } 
+        input::placeholder { color: #6a4c3d; } 
+        input:-ms-input-placeholder { color: #6a4c3d; } 
+        .evt_btn_submit { border: 0; cursor: pointer; width: 180px; height: 85px; background-color:rgba(255, 255, 255, 0);} 
+        .evt_form_check { cursor: pointer; vertical-align: top; } 
+        .evt_form_check>span { vertical-align: top; display: inline-block; } 
+        .evt_form_check .evt_ico_check { width: 18px; height: 18px; margin-right: 8px; box-sizing: border-box; border: 1px solid #281314; } 
+        .evt_form_check>input:checked+.evt_ico_check { background: #260c0c url("images/ico_check.png") no-repeat center; } 
+        .evt_txt_check { font-size: 14px; color: #ffffff; font-family: Malgun Gothic; letter-spacing: -0.5px; } 
+        .evt_btn_info_view { cursor: pointer; margin-top: -2px; margin-left: 10px; font-size: 12px; /* color: #fff; background-color: #db3500; border: 1px solid #db3500; */ border-radius: 2px; width: 70px; height: 21px; text-align: center; vertical-align: top; font-family: Malgun Gothic; } 
+        .evt_pop_wrap { position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; } 
+
+        .evt_pop { width: 480px; height: 350px; background-repeat: no-repeat; font-family: Malgun Gothic; position: relative; } 
+        .evt_pop_close { position: absolute; width: 47px; height: 47px; border: 0; cursor: pointer; top: 0; right: 0; } 
+    
+        .btnCommon { position: absolute; width: 425px; height: 85px; left: 0; right: 0; margin: auto; display: block; background-color: rgba(255, 255, 255, 0); } 
+        .btnCommon:hover { cursor: pointer; } 
+        .stop_dragging { -ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; } 
+    </style>
+    <script>
+        // 스크롤 fix 제어
+        $(window).scroll(function() {
+            var position = $(window).scrollTop();
+            var $bg01 = $('.bg01');
+            var $bg02 = $('.bg02');
+            var $btn_scroll = $('.evt_wrap .btn_scroll');
+            if (position >= 40) {
+                $bg01.addClass("on")
+                $bg02.addClass("on")
+                $btn_scroll.addClass("on")
+            } else {
+                $bg01.removeClass("on")
+                $bg02.removeClass("on")
+                $btn_scroll.removeClass("on")
+            }
+        });
+
+        // 경품 리스트
+     var itemEnigma = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_enigma.png',
+            text : '에니그마',
+		},
+		itemShako = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_shako.png',
+            text : '샤코',
+		},
+        itemJahRune = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_jahrune.png',
+            text : '자룬',
+		},
+        itemBerRune = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_berrune.png',
+            text : '베르룬',
+		},
+        itemM1000 = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_m1000.png',
+            text : '마일리지 천원',
+		},
+        itemM500 = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_m500.png',
+            text : '마일리지 5백원',
+		},
+        itemC1000 = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_c1000.png',
+            text : '할인쿠폰 천원',
+		},
+        itemC5000 = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_c500.png',
+            text : '할인쿠폰 5백원',
+		},
+        itemPower = {
+            img : 'http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_powerzon.png',
+            text : '파워존 1시간',
+		}
+        $(function(){
+            // 당첨내역 확인 팝업
+            $(".evt_wrap .btn_win_list").on('click',function(){
+                $(".pop_list").removeClass("hide") 
+                $(".pop_prize").addClass("hide") 
+            });
+            // 상품응모 팝업
+            $(".evt_wrap .btn_apply").on('click',function(){
+                $(".pop_list").addClass("hide") 
+                $(".pop_prize").removeClass("hide") 
+            });
+            // 팝업 제거
+            $(".btn_close").on('click', function(){
+                $(this).parents(".pop_up").addClass("hide")
+            })
+        })
+
+        // [dev] 퍼블 확인용 function 지워야합니다.
+        $(function(){
+            $(".pop_prize img").attr("src","http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_powerzon.png")
+            $(".pop_prize img").attr("alt", itemPower.text)
+            $(".pop_prize p span").text(itemPower.text)
+        })
+        
+        $(document).ready(function(){
+            // 게임 제목
+            var title = "디아블로2 레더 4시즌"
+
+            // 웹접근성 - 배경이미지
+            var accessibility = "디아블로2 레더 4시즌 이벤트 참여하면 쌀먹 필수템 쏜다! 꽝 없는 100 % 당첨 이벤트 거래 완료시 하루 최대 10장까지 응모권 지급! 판매 완료 시 응모권 1장 지급 구매 완료 시 응모권 2장 지급 상품 응모하기 상품안내 수수께끼, 샤코, 자룬, 베르룬 마일리지 1천원, 500마일리지, 할인쿠폰 1천원, 할인쿠폰 500원, 파워존 1시간"
+            $('.evt_con .none').text(accessibility)
+
+            // 배경이미지
+            var bgs = [
+                { 
+                    src : "images/bg000.jpg",
+                    url : ""
+                },
+                { 
+                    src : "images/bg001.jpg",
+                    url : ""
+                },
+                { 
+                    src : "images/bg002.jpg",
+                    url : "https://www.naver.com"
+                },
+                { 
+                    src : "images/bg003.jpg",
+                    url : ""
+                },
+                { 
+                    src : "images/bg004.jpg",
+                    url : "https://www.itembay.com/item/sell/itemSellList?iGameSeq=3954&iGameServerSeq=0&tiItemType=1"
+                }
+            ]
+            if (bgs.length >= 1) {
+                for (var i = 0; i < bgs.length; i++) {
+                    var imgs = document.createElement("img");
+                    imgs.setAttribute("src", bgs[i].src)
+                    imgs.setAttribute("id", "evtBg" + i)                    
+                    if(bgs[i].url !== ''){
+                        imgs.setAttribute("class", "haslink")
+                    } else {
+                        imgs.setAttribute("class", "")
+                    }
+                    imgs.setAttribute("alt", title + '-' + (i + 1) + '번째 배경 이미지')
+                    $('.evt_bg').append(imgs)  
+                }
+
+                // 바로가기 버튼 및 사전 예약 위치 설정
+                $(window).on('load', function(){
+                    // 사전예약 위치 설정
+                    var prereservation = $('.evt_bg')[0].children[0].getAttribute('id')
+                    var prereservationTop = $('#' + prereservation)[0].offsetTop + 505
+                    $('.evt_box1_form').css('top', prereservationTop)
+
+                    // 바로가기 버튼 위치설정    
+                    var findHaslink = $('.evt_bg')[0].childNodes
+
+                    // BG첫번째 두번째
+                    $(findHaslink[1]).addClass('bg01')
+                    $(findHaslink[2]).addClass('bg02')
+
+                    for(var i=0; i < findHaslink.length; i++){  
+                        var linkBts = document.createElement('a')         
+                        var applyNum = document.createElement('div')
+
+                        if($(findHaslink[i]).hasClass('haslink')){
+                            // 바로가기
+                            $('.linkzone').append(linkBts)
+                            linkBts.setAttribute('class', 'btnCommon')
+                            linkBts.setAttribute('id', 'btn' + i)
+                            linkBts.setAttribute('target', '_blank')
+                            linkBts.setAttribute('title', '바로가기')
+                            linkBts.setAttribute('href', bgs[i - 1].url)
+                            var btsToTop = $(findHaslink[i]).context.offsetTop + 350
+                            $(linkBts).css('top', btsToTop)
+                            
+                            // 응모하기
+                            $('.linkzone').append(applyNum)
+                        }
+                    }
+                });
+            }
+
+            // 이벤트기간
+            var date = "2023.05.05 ~ 2023.06.01"
+            var dateColor = "#fff"
+            $('.date')[0].childNodes[1].innerText = date
+            $('.date').css('color', dateColor)
+
+            // 예약
+            var checkTxtColor = "red"; //개인정보수집이용동의 텍스트 색상
+            var infoBoxColor = "#fff"; 
+            var infoBoxBgColor = "#000"; //개인정보수집이용동의 전문보기 박스색상
+            var checkboxBgColorBasic = "#fff"; //개인정보수집이용동의 체크박스 기본 색상
+            var checkboxBgColor = "red"; //개인정보수집이용동의 체크박스 변경 색상
+            var formInputColor = "#000"; //번호 입력 input 컬러 
+
+            $('.evt_txt_check').css('color', checkTxtColor);
+            $('.evt_btn_info_view').css('background-color', infoBoxBgColor);
+            $('.evt_btn_info_view').css('border-color', infoBoxBgColor);
+            $('.evt_btn_info_view').css('color', infoBoxColor);
+            $('.evt_form_box > input').css('color', formInputColor)
+            $('.evt_form_box > input').addClass('inputNum');
+            $('head').append("<style>.evt_form_box .inputNum::placeholder {" + 'color:' + formInputColor + "}</style>");
+            
+            $('.evt_ico_check').css('background-color', checkboxBgColorBasic);
+            $(".evt_form_check").click(function () {
+                var chk = $("#check_pi").is(":checked");//.attr('checked'); 
+                if (chk) {
+                    $('#check_pi').prop('checked', true);
+                    $('.evt_ico_check').css('background-color', checkboxBgColor);
+                }
+                else {
+                    $('#check_pi').prop('checked', false);
+                    $('.evt_ico_check').css('background-color', checkboxBgColorBasic);
+                }
+            });
+
+            // 유의사항
+            var notice = [
+                "게임머니/아이템/기타 카테고리에서 2천원 이상 판/구매 완료 시 응모권이 지급됩니다. (1일 최대 10장)",
+                "지급되는 마일리지는 구매가능 마일리지로 즉시 지급됩니다.",
+                "할인쿠폰은 게임머니/아이템/기타 카테고리에서만 적용 가능하며, 2,000원 이상 거래 시 사용 가능합니다.", "수수께끼 (3만원), 샤코 (1만원), 자룬 (5천원),$ 베르룬 (3천원) 등 당첨 시 구매가능 마일리지로 대체 지급됩니다.",
+                "수수께끼 (3만원), 샤코 (1만원), 자룬 (5천원), 베르룬 (3천원) 등 당첨 시 구매가능 마일리지로 대체 지급됩니다.",
+                "5만원을 초과하는 경품의 경우 제세공과금 22%가 부과되며, 제세공과금 처리를 위한 신분증 사본 및 개인 정보 수집 이용 동의서 제출이 필요합니다. $당첨자에게는 이벤트 종료 후 10일 이내 회원정보에 기재된 유선번호 및 이메일로 당첨 안내가 발송됩니다.",
+                "비정상적인 참여 및 악용 시 지급된 경품 회수, 거래 정지 등 불이익이 발생할 수 있습니다.",
+                "본 이벤트는 내부 사정에 따라 사전 고지 없이 변경 또는 조기종료될 수 있습니다."
+            ]
+            var noticeBg = '#010101'
+            var noticeColor = "#fff"
+            if (notice.length >= 1) {
+                $('.evt_footer').css("background-color", noticeBg);
+
+                for (var i = 0; i < notice.length; i++) {
+                    var listLi = document.createElement("li")
+                    document.querySelector('.list_notice').appendChild(listLi).innerText = notice[i].replace('$', '\n') //$가 있을경우 띄어쓰기로
+                    $('.tit_notice').css("color", noticeColor);
+                    $('.evt_notice_wrap li').css("color", noticeColor);
+                    $('.evt_notice_wrap li').addClass("notices");
+                }
+                $('head').append("<style>.notices:before {content: ''; position: absolute;top: 6px;left: 0;width: 4px; height: 4px;border-radius: 100%;" + 'background:' + noticeColor + "} + </style>");
+            }
+
+            // 전문보기 팝업
+            var popupNotice = "개인정보 수집 및 이용안내 (주)아이템베이는 이벤트 진행을 위해 아래와 같이 개인 정보 수집 및  취급 업무를 하며 본 목적 외 다른 목적으로 사용되지 않습니다. 개인정보의 수집 및 이용 수집 정보: 이동전화번호 수집 목적: 게임 출시 이벤트 알림 문자발송, 상품 제공 보유 기간: 이벤트 종료 직후 1개월 간 보관 후 삭제 이에 동의하지 않는 경우 개인정보 제공을 거절할 수 있으며,  이벤트 참여가 제한됩니다."
+            $('.evt_pop_wrap .blind').text(popupNotice) // 웹접근성 - 팝업
+            var popBg = "images/pop_bg.jpg"
+            $('.evt_pop').css({"background-image":"url("+ popBg +")"})
+
+            $('.evt_btn_info_view').click(function () {
+                $('.evt_pop_wrap').removeClass('hide');
+            })
+            $('.evt_pop_close').click(function () {
+                $('.evt_pop_wrap').addClass('hide');
+            })
+
+            // 푸터
+            var footerBg = '#ccc'
+            var footerColor = "#000"
+            $('.evt_copyright').css("background-color", footerBg);
+            $('.evt_copyright p').css("color", footerColor);            
+        })
+    </script>
+</head>
+
+<body>
+
+    <div class="evt_wrap">
+        <!-- 이벤트 컨텐츠 //시작 -->
+        <div class="evt_bg">
+        </div>
+        <div class="evt_page">
+            <div class="evt_con">
+                <div class="none">
+                </div>
+
+                <!-- 상단 플로팅 배너 -->
+                <div class="btn_scroll">
+                    <a href="https://www.itembay.com/item/sell/itemSellList?iGameSeq=3786&iGameServerSeq=12727&tiItemType=4" title="거래하러 가기" target="_blank"></a>
+                    <button type="button" class="btn_win_list" title="당첨내역 확인하기"></button>
+                </div>
+
+                <!-- 이벤트 기간 -->
+                <p class="date"><span>이벤트 기간</span><span></span></p>
+
+                <!-- 예약 -->
+                <div class="evt_inner evt_box1_form">
+                    <h1 class="blind">DK모바일 디 오리진 시즌 초기화</h1>
+                    <!-- 휴대폰번호 입력 -->
+                    <form class="evt_box_reserve">
+                        <h2 class="blind">사전예약 참여하고 누구보다 빠르게 육성하자! </h2>
+                        <label for="form_phone_number" class="blind">전화번호 입력</label>
+                        <div class="evt_form_box">
+                            <input type="text" placeholder="‘-’ 없이 휴대폰 번호를 입력하세요." maxlength="11"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            <button class="evt_btn_submit" type="button"><span class="blind">사전예약하기</span></button>
+                        </div>
+                        <div style="text-align: left; margin-top: 13px;">
+                            <label for="check_pi" class="evt_form_check stop_dragging">
+                                <input type="checkbox" name="check_pi" id="check_pi" class="blind">
+                                <span class="evt_ico_check"></span>
+                                <span class="evt_txt_check stop_dragging">개인정보 수집 및 이용에 동의합니다.</span>
+                            </label>
+                            <button class="evt_btn_info_view" type="button">전문보기</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 응모 -->
+                <div class="apply_ticket">
+                    <!-- 응모권 수 -->
+                    <p class="num_ticket"><span>10</span>개</p>
+                    <!-- 응모하기 btn -->
+                    <button type="button" class="btn_apply" title="상품 응모하기"></button>
+                </div>
+
+                <!-- 당첨 팝업 -->
+                <div class="pop_up pop_prize hide">
+                    <button class="btn_close" title="닫기"></button>
+                    <img src="http://www.itembay.com/resources/event/2023/0505_diablo2/images/img_m1000.png" alt="마일리지" />
+                    <p>[<span>경품명</span>]<br />축하드립니다!</p>
+                </div>
+
+                <!-- 거래내역 확인 팝업 -->
+                <div class="pop_up pop_list hide">
+                    <button class="btn_close" title="닫기"></button>
+                    <table>
+                        <colgroup>
+                            <col width="160px">
+                            <col width="240px">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>당첨일자</th>
+                                <th>당첨 경품명</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2023-03-30</td>
+                                <td>마일리지 1만원</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-30</td>
+                                <td>마일리지 1만원</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-30</td>
+                                <td>마일리지 1만원</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-30</td>
+                                <td>마일리지 1만원</td>
+                            </tr>
+                            <tr>
+                                <td>2023-03-30</td>
+                                <td>마일리지 1만원</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>※ 경품 금액이 5만원을 초과한 경우, 서류 확인 후 지급됩니다.</p>
+                    <ul class="change_page">
+                        <li><a href="javascript:;">처음</a></li>
+                        <li><a href="javascript:;">이전</a></li>
+                        <li><a href="javascript:;">다음</a></li>
+                        <li><a href="javascript:;">마지막</a></li>
+                    </ul>
+                </div>
+
+                <!-- 팝업 -->
+                <div class="evt_pop_wrap hide">
+                    <div class="dimmed"></div>
+                    <div class="evt_pop">
+                        <div class="blind"></div>
+                        <button type="button" class="evt_pop_close"><span class="blind">팝업닫기</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--바로가기-->
+        <div class="linkzone"></div>
+
+        <!-- 유의사항 -->
+        <div class="evt_footer">
+            <div class="evt_inner">
+                <div class="evt_notice_wrap">
+                    <strong class="tit_notice tit_box">이벤트 유의사항</strong>
+                    <div>
+                        <ul class="list_notice type_box">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="evt_copyright tc">
+                <p>© itemBay Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+        <!-- 이벤트 컨텐츠 //끝 -->
+    </div>
+</body>
+
+</html>
