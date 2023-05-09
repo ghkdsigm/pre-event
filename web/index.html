@@ -110,6 +110,8 @@
                     imgs.setAttribute("id", "evtBg" + i)
                     if(bgs[i].url !== ''){
                         imgs.setAttribute("class", "haslink")
+                    } else {
+                        imgs.setAttribute("class", "")
                     }
                     imgs.setAttribute("alt", title + '-' + (i + 1) + '번째 배경 이미지')
                     $('.evt_bg').append(imgs)                      
@@ -117,11 +119,6 @@
 
                 // 바로가기 버튼 및 사전 예약 위치 설정
                 $(window).on('load', function(){
-                    // 사전예약 위치 설정
-                    var prereservation = $('.evt_bg')[0].children[0].getAttribute('id')
-                    var prereservationTop = $('#' + prereservation)[0].offsetTop + 425
-                    $('.evt_box1_form').css('top', prereservationTop)
-
                     // 바로가기 버튼 위치설정    
                     var findHaslink = $('.evt_bg')[0].childNodes
 
