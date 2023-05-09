@@ -59,7 +59,7 @@
         .evt_list_pi>li:first-child::before { background-color: #616781; } 
         input::placeholder { color: #6a4c3d; } 
         input:-ms-input-placeholder { color: #6a4c3d; } 
-        .evt_btn_submit { border: 0; cursor: pointer; width: 180px; height: 85px; } 
+        .evt_btn_submit { border: 0; cursor: pointer; width: 180px; height: 85px; background-color:rgba(255, 255, 255, 0);} 
         .evt_form_check { cursor: pointer; vertical-align: top; } 
         .evt_form_check>span { vertical-align: top; display: inline-block; } 
         .evt_form_check .evt_ico_check { width: 18px; height: 18px; margin-right: 8px; box-sizing: border-box; border: 1px solid #281314; } 
@@ -187,6 +187,10 @@
                 $('.btn2').css('bottom', footerHeight + 167)
                 $('.btn2').attr('href', linkUrl)
             }
+
+            $('.evt_btn_submit').click(function(){
+                console.log(123)
+            })
         })
     </script>
 </head>
