@@ -175,6 +175,8 @@
 
             // 전문보기 팝업
             var popupNotice = "개인정보 수집 및 이용안내 (주)아이템베이는 이벤트 진행을 위해 아래와 같이 개인 정보 수집 및  취급 업무를 하며 본 목적 외 다른 목적으로 사용되지 않습니다. 개인정보의 수집 및 이용 수집 정보: 이동전화번호 수집 목적: 게임 출시 이벤트 알림 문자발송, 상품 제공 보유 기간: 이벤트 종료 직후 1개월 간 보관 후 삭제 이에 동의하지 않는 경우 개인정보 제공을 거절할 수 있으며,  이벤트 참여가 제한됩니다."
+            var popBg = "images/pop_bg.jpg"
+            $('.evt_pop_wrap > img').attr('src', popBg)            
             $('.evt_pop_wrap .blind').text(popupNotice) // 웹접근성 - 팝업
 
             $('.evt_btn_info_view').click(function () {
@@ -208,7 +210,6 @@
                 </div>
                 <div class="btn_area">
                     <a href="javascript:;" class="btn_baytalk new"></a>
-
                     <a href="javascript:;" class="btn_menu btn_open_pop" data-pop="pop_menu"></a>
                 </div>
             </nav>
@@ -242,10 +243,9 @@
 
                     <!-- 이용약관 -->
                     <div class="evt_pop_wrap">
-                        <img src="images/pop_bg.jpg" alt="이용약관 배경이미지">
+                        <img src="" alt="이용약관 배경이미지">
                         <a href="javascript:;" class="btn close" title="닫기"></a>
-                        <div class="blind">
-                        </div>
+                        <div class="blind"></div>
                     </div>
 
                     <!--바로가기-->
