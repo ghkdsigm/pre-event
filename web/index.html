@@ -129,6 +129,7 @@
             font-family: 'Malgun Gothic', sans-serif;
             font-weight: 100;
             font-size: 13px;
+            text-align: left;
         }
 
         .evt_footer .evt_inner .list_notice li+li {
@@ -187,7 +188,7 @@
             background: transparent;
             float: left;
             box-sizing: border-box;
-            color: #131313;
+            /* color: #131313; */
             font-size: 24px;
             font-family: 'Malgun Gothic', sans-serif;
             text-align: center;
@@ -195,11 +196,11 @@
         }
 
         .evt_form_box input::placeholder {
-            color: #131313;
+            /* color: #131313; */
         }
 
         .evt_form_box input:-ms-input-placeholder {
-            color: #131313;
+            /* color: #131313; */
         }
 
         .evt_list_pi>li {
@@ -271,10 +272,10 @@
             margin-top: -2px;
             margin-left: 10px;
             font-size: 12px;
-            color: #fff;
+            /* color: #fff;
             background-color: #db3500;
+            border: 1px solid #db3500; */
             border-radius: 2px;
-            border: 1px solid #db3500;
             width: 70px;
             height: 21px;
             text-align: center;
@@ -367,20 +368,24 @@
             $('.date')[0].childNodes[1].innerText = date
 
             // 예약
-            var checkTxtColor = "red";
-            var infoBoxColor = "#fff";
-            var infoBoxBgColor = "#000";
-            var checkboxBgColorBasic = "#fff";
-            var checkboxBgColor = "red";
+            var checkTxtColor = "red"; //개인정보수집이용동의 텍스트 색상
+            var infoBoxColor = "#fff"; 
+            var infoBoxBgColor = "#000"; //개인정보수집이용동의 전문보기 박스색상
+            var checkboxBgColorBasic = "#fff"; //개인정보수집이용동의 체크박스 기본 색상
+            var checkboxBgColor = "red"; //개인정보수집이용동의 체크박스 변경 색상
+            var formInputColor = "#000"; //번호 입력 input 컬러 
 
             $('.evt_txt_check').css('color', checkTxtColor);
             $('.evt_btn_info_view').css('background-color', infoBoxBgColor);
             $('.evt_btn_info_view').css('border-color', infoBoxBgColor);
+            $('.evt_btn_info_view').css('color', infoBoxColor);
+            $('.evt_form_box > input').css('color', formInputColor)
+            $('.evt_form_box > input').addClass('inputNum');
+            $('head').append("<style>.evt_form_box .inputNum::placeholder {" + 'color:' + formInputColor + "}</style>");
 
             $(".evt_form_check").click(function () {
                 var chk = $("#check_pi").is(":checked");//.attr('checked'); 
                 if (chk) {
-                    console.log(chk)
                     $('#check_pi').prop('checked', true);
                     $('.evt_ico_check').css('background-color', checkboxBgColor);
                 }
