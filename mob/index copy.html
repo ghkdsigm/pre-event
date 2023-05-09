@@ -13,7 +13,7 @@
         /* event common */
         .evt_wrap { position: relative; text-size-adjust: none; -webkit-text-size-adjust: none; -moz-text-size-adjust: none; -ms-text-size-adjust: none; padding-bottom: 0 !important; } 
         .evt_con { position: relative; height: 100%; overflow: hidden; } 
-        .evt_con .evt_bg img { width: 100%; pointer-events: none; left: 50%; transform: translateX(-50%); position: relative; width: 220%; display: block; } 
+        .evt_con .evtBg { width: 100%; pointer-events: none; left: 50%; transform: translateX(-50%); position: relative; width: 220%; display: block; } 
         .evt_wrap input { margin: 0; padding: 0}
         .evt_wrap .none { width: 1px; height: 1px; font-size: 0; line-height: 0; position: absolute; top: 0; left: -1000%; overflow: hidden}
         .evt_footer .evt_notice_wrap { padding: 5.5556vw; } 
@@ -48,8 +48,8 @@
         .evt_pop_wrap { display: none; position: absolute; top: 10%; left: 20%; width: 60%; z-index: 9997}
         .evt_pop_wrap .btn.close { position: absolute; right: 0; top: 0; width: 10%; height: 6vw}
 
-        .btnCommon { position: absolute; width: 50vw; height: 10vw; left: 0; right: 0; margin: auto; display: block; background-color: rgba(255, 255, 255, 0); } 
-        .btnCommon:hover { cursor: pointer; } 
+        .btn2 { position: absolute; width: 50vw; height: 10vw; left: 0; right: 0; margin: auto; display: block; background-color: rgba(255, 255, 255, 0); margin-bottom: 19vw; } 
+        .btn2:hover { cursor: pointer; } 
     </style>
     <script>
         $(document).ready(function(){
@@ -62,53 +62,19 @@
 
             // 배경이미지
             var bgs = [
-                { 
-                    src : "images/bg001.jpg",
-                    url : ""
-                },
-                { 
-                    src : "images/bg002.jpg",
-                    url : "https://m.naver.com"
-                },
-                { 
-                    src : "images/bg003.jpg",
-                    url : ""
-                },
-                { 
-                    src : "images/bg004.jpg",
-                    url : "https://m.itembay.com/m/item/sell/itemSellList?iGameSeq=3954&iGameServerSeq=0&tiItemType=4"
-                }
+                "images/bg001.jpg",
+                "images/bg002.jpg",
+                "images/bg003.jpg",
+                "images/bg004.jpg"
             ]
             if (bgs.length >= 1) {
                 for (var i = 0; i < bgs.length; i++) {
                     var imgs = document.createElement("img");
-                    imgs.setAttribute("src", bgs[i].src)
-                    imgs.setAttribute("id", "evtBg" + i)
-                    if(bgs[i].url !== ''){
-                        imgs.setAttribute("class", "haslink")
-                    }
+                    imgs.setAttribute("src", bgs[i])
+                    imgs.setAttribute("class", "evtBg")
                     imgs.setAttribute("alt", title + '-' + (i + 1) + '번째 배경 이미지')
                     $('.evt_bg').append(imgs)
                 }
-
-                // 바로가기 버튼 설정
-                $(window).on('load', function(){    
-                    // 바로가기 버튼 위치설정    
-                    var findHaslink = $('.evt_bg')[0].childNodes
-
-                    for(var i=0; i < findHaslink.length; i++){  
-                        var linkBts = document.createElement('a')                      
-                        if($(findHaslink[i]).hasClass('haslink')){
-                            $('.linkzone').append(linkBts)
-                            linkBts.setAttribute('class', 'btnCommon')
-                            linkBts.setAttribute('id', 'btn' + i)
-                            linkBts.setAttribute('title', '바로가기')
-                            linkBts.setAttribute('href', bgs[i - 1].url)  
-                            var btsToTop = $(findHaslink[i])[0].offsetTop / $( window ).width() * 100
-                            $(linkBts).css('top', btsToTop + 40 + 'vw')    
-                        }
-                    }
-                });
             }
 
             // 이벤트기간
@@ -165,6 +131,7 @@
                 for (var i = 0; i < notice.length; i++) {
                     var listLi = document.createElement("li")
                     document.querySelector('.evt_list_notice').appendChild(listLi).innerText = notice[i].replace('$', '\n') //$가 있을경우 띄어쓰기로
+                    //$('.evt_list_notice').append("<li>" + li + "</li>")    
                     $('.tit_notice strong').css("color", noticeColor);
                     $('.evt_notice_wrap li').css("color", noticeColor);
                     $('.evt_notice_wrap li').addClass("notices");
@@ -189,7 +156,20 @@
             var footerColor = "red"
             $('.evt_copyright').css("background-color", footerBg);
             $('.evt_copyright p').css("color", footerColor);
+
+            // 바로가기 버튼 위치 설정
+            var linkUrl = "https://m.itembay.com/m/item/sell/itemSellList?iGameSeq=3954&iGameServerSeq=0&tiItemType=4"
+            if ($('.evt_footer')) {
+                var footerHeight = $('.evt_footer')[0].offsetHeight
+                $('.btn2').css('bottom', footerHeight)
+                window.addEventListener("resize", function () {
+                    var footerHeight = $('.evt_footer')[0].offsetHeight
+                    $('.btn2').css('bottom', footerHeight)
+                })
+                $('.btn2').attr('href', linkUrl)
+            }
         });
+
     </script>
 </head>
 
@@ -249,7 +229,7 @@
                     </div>
 
                     <!--바로가기-->
-                    <div class="linkzone"></div>
+                    <a href="#" class="btn2" title="바로가기"></a>
 
                     <!-- 이벤트 유의사항 -->
                     <div class="evt_footer">
