@@ -15,334 +15,72 @@
     <!-- 상단 css 및 스크립트 파일은 헤더에 포함되어 있으므로 이벤트페이지에 삽입 x -->
     <style>
         /* 기본 css */
-        body {
-            position: relative;
-        }
-
-        .evt_wrap .evt_page {
-            min-width: 1000px;
-            width: 1000px;
-            margin: 0 auto;
-            height: 100%;
-            top: 0;
-        }
-
-        .evt_wrap .evt_con {
-            position: absolute;
-            top: 0;
-            width: 1000px;
-            height: 100%;
-        }
+        body { position: relative; } 
+        .evt_wrap .evt_page { min-width: 1000px; width: 1000px; margin: 0 auto; height: 100%; top: 0; } 
+        .evt_wrap .evt_con { position: absolute; top: 0; width: 1000px; height: 100%; } 
 
         /* 배경이미지 */
-        .evt_wrap .evt_bg {
-            min-width: 1000px;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -ms-flex-align: center;
-            align-items: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            background: #000;
-            overflow: hidden;
-        }
-
-        .evt_wrap .evt_bg .bg01 {
-            z-index: 10;
-            position: relative;
-            top: 0;
-            transition: .3s position;
-        }
-
-        .evt_wrap .evt_bg .bg01.on {
-            position: fixed;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .evt_wrap .evt_bg .bg02 {
-            margin-top: 0;
-        }
-
-        .evt_wrap .evt_bg .bg02.on {
-            margin-top: 80px;
-        }
+        .evt_wrap .evt_bg { min-width: 1000px; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; -ms-flex-pack: center; justify-content: center; background: #000; overflow: hidden; } 
+        .evt_wrap .evt_bg .bg01 { z-index: 10; position: relative; top: 0; transition: .3s position; } 
+        .evt_wrap .evt_bg .bg01.on { position: fixed; left: 50%; transform: translateX(-50%); } 
+        .evt_wrap .evt_bg .bg02 { margin-top: 0; } 
+        .evt_wrap .evt_bg .bg02.on { margin-top: 80px; } 
 
         /* seo */
-        .evt_wrap .none {
-            width: 1px;
-            height: 1px;
-            font-size: 0;
-            line-height: 0;
-            position: absolute;
-            top: 0;
-            left: -1000%;
-            overflow: hidden
-        }
+        .evt_wrap .none { width: 1px; height: 1px; font-size: 0; line-height: 0; position: absolute; top: 0; left: -1000%; overflow: hidden}
 
         /* 이벤트 기간 */
-        .evt_wrap .date {
-            position: relative;
-            top: 20px;
-            width: 680px;
-            margin: 0 auto;
-            text-align: right;
-            color: #fff;
-            font-family: Malgun Gothic;
-            font-weight: 300;
-            font-size: 14px;
-        }
-
-        .evt_wrap .date span {
-            margin-right: 12px;
-        }
+        .evt_wrap .date { position: relative; top: 20px; width: 680px; margin: 0 auto; text-align: right; font-family: Malgun Gothic; font-weight: 300; font-size: 14px; } 
+        .evt_wrap .date span { margin-right: 12px; } 
 
         /* 푸터 */
-        .evt_footer {
-            position: relative;
-            min-width: 1000px;
-        }
+        .evt_footer { position: relative; min-width: 1000px; } 
+        .evt_footer .evt_inner { position: relative; width: 1000px; padding: 30px 0 34px; margin: 0 auto; } 
+        .evt_footer .evt_inner .tit_notice { font-family: 'Malgun Gothic', sans-serif, sans-serif; font-size: 20px; font-weight: 500; } 
+        .evt_footer .evt_inner .list_notice { margin-top: 20px; } 
+        .evt_footer .evt_inner .list_notice li { position: relative; padding-left: 10px; font-family: Malgun Gothic; font-weight: 100; font-size: 13px; text-align: left; } 
+        .evt_footer .evt_inner .list_notice li+li { margin-top: 10px; } 
+        .evt_footer .evt_inner .list_notice li.none_before::before { display: none; } 
+        .evt_footer .evt_inner .list_notice li span { display: inline-block; margin-top: 10px; } 
+        .evt_footer .evt_copyright { padding: 20px 0; text-align: center; } 
+        .evt_footer .evt_copyright p { font-family: Malgun Gothic; font-size: 12px; } 
 
-        .evt_footer .evt_inner {
-            position: relative;
-            width: 1000px;
-            padding: 30px 0 34px;
-            margin: 0 auto;
-        }
-
-        .evt_footer .evt_inner .tit_notice {
-            font-family: 'Malgun Gothic', sans-serif, sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        .evt_footer .evt_inner .list_notice {
-            margin-top: 20px;
-        }
-
-        .evt_footer .evt_inner .list_notice li {
-            position: relative;
-            color: #fff;
-            padding-left: 10px;
-            font-family: 'Malgun Gothic', sans-serif;
-            font-weight: 100;
-            font-size: 13px;
-            text-align: left;
-        }
-
-        .evt_footer .evt_inner .list_notice li+li {
-            margin-top: 10px;
-        }
-
-        .evt_footer .evt_inner .list_notice li.none_before::before {
-            display: none;
-        }
-
-        .evt_footer .evt_inner .list_notice li span {
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .evt_footer .evt_copyright {
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        .evt_footer .evt_copyright p {
-            font-family: 'Malgun Gothic', sans-serif;
-            font-size: 12px;
-        }
-
-        br {
-            display: block;
-            content: "";
-            margin-top: 5px;
-            line-height: 190%;
-            vertical-align: top;
-        }
+        br { display: block; content: ""; margin-top: 5px; line-height: 190%; vertical-align: top; } 
 
         /*팝업*/
-        .evt_inner {
-            width: 1000px;
-            margin: 0 auto;
-        }
+        .evt_inner { width: 1000px; margin: 0 auto; } 
+        .evt_box1_form { position: absolute; top: 425px; right: 0; left: 0; width: 640px; } 
+        .evt_form_box { overflow: hidden; } 
+        .evt_form_box input { border: 0; width: 458px; height: 85px; background: transparent; float: left; box-sizing: border-box; /* color: #131313; */ font-size: 24px; font-family: Malgun Gothic; text-align: center; padding: 0; } 
+        .evt_form_box input::placeholder { /* color: #131313; */}
+        .evt_form_box input:-ms-input-placeholder { /* color: #131313; */}
+        .evt_list_pi>li { font-family: Malgun Gothic; } 
+        .evt_list_pi>li::before { display: inline-block; width: 4px; height: 4px; vertical-align: middle; margin-right: 3px; background-color: #c21c00; content: ''; border-radius: 50%; } 
+        .evt_list_pi>li:first-child::before { background-color: #616781; } 
+        input::placeholder { color: #6a4c3d; } 
+        input:-ms-input-placeholder { color: #6a4c3d; } 
+        .evt_btn_submit { border: 0; cursor: pointer; width: 180px; height: 85px; } 
+        .evt_form_check { cursor: pointer; vertical-align: top; } 
+        .evt_form_check>span { vertical-align: top; display: inline-block; } 
+        .evt_form_check .evt_ico_check { width: 18px; height: 18px; margin-right: 8px; box-sizing: border-box; border: 1px solid #281314; } 
+        .evt_form_check>input:checked+.evt_ico_check { background: #260c0c url("images/ico_check.png") no-repeat center; } 
+        .evt_txt_check { font-size: 14px; color: #ffffff; font-family: Malgun Gothic; letter-spacing: -0.5px; } 
+        .evt_btn_info_view { cursor: pointer; margin-top: -2px; margin-left: 10px; font-size: 12px; /* color: #fff; background-color: #db3500; border: 1px solid #db3500; */ border-radius: 2px; width: 70px; height: 21px; text-align: center; vertical-align: top; font-family: Malgun Gothic; } 
+        .evt_pop_wrap { position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 1000; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; } 
 
-        .evt_box1_form {
-            position: absolute;
-            top: 425px;
-            right: 0;
-            left: 0;
-            width: 640px;
-        }
-
-        .evt_form_box {
-            overflow: hidden;
-        }
-
-        .evt_form_box input {
-            border: 0;
-            width: 458px;
-            height: 85px;
-            background: transparent;
-            float: left;
-            box-sizing: border-box;
-            /* color: #131313; */
-            font-size: 24px;
-            font-family: 'Malgun Gothic', sans-serif;
-            text-align: center;
-            padding: 0;
-        }
-
-        .evt_form_box input::placeholder {
-            /* color: #131313; */
-        }
-
-        .evt_form_box input:-ms-input-placeholder {
-            /* color: #131313; */
-        }
-
-        .evt_list_pi>li {
-            font-family: 'Malgun Gothic', sans-serif;
-        }
-
-        .evt_list_pi>li::before {
-            display: inline-block;
-            width: 4px;
-            height: 4px;
-            vertical-align: middle;
-            margin-right: 3px;
-            background-color: #c21c00;
-            content: '';
-            border-radius: 50%;
-        }
-
-        .evt_list_pi>li:first-child::before {
-            background-color: #616781;
-        }
-
-        input::placeholder {
-            color: #6a4c3d;
-        }
-
-        input:-ms-input-placeholder {
-            color: #6a4c3d;
-        }
-
-        .evt_btn_submit {
-            border: 0;
-            cursor: pointer;
-            width: 180px;
-            height: 85px;
-        }
-
-        .evt_form_check {
-            cursor: pointer;
-            vertical-align: top;
-        }
-
-        .evt_form_check>span {
-            vertical-align: top;
-            display: inline-block;
-        }
-
-        .evt_form_check .evt_ico_check {
-            width: 18px;
-            height: 18px;
-            margin-right: 8px;
-            box-sizing: border-box;
-            border: 1px solid #281314;
-            background-color: #fff;
-        }
-
-        .evt_form_check>input:checked+.evt_ico_check {
-            background: #260c0c url("images/ico_check.png") no-repeat center;
-        }
-
-        .evt_txt_check {
-            font-size: 14px;
-            color: #ffffff;
-            font-family: 'Malgun Gothic', sans-serif;
-            letter-spacing: -0.5px;
-        }
-
-        .evt_btn_info_view {
-            cursor: pointer;
-            margin-top: -2px;
-            margin-left: 10px;
-            font-size: 12px;
-            /* color: #fff;
-            background-color: #db3500;
-            border: 1px solid #db3500; */
-            border-radius: 2px;
-            width: 70px;
-            height: 21px;
-            text-align: center;
-            vertical-align: top;
-            font-family: 'Malgun Gothic', sans-serif;
-        }
-
-        .evt_pop_wrap {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .evt_pop {
-            width: 480px;
-            height: 350px;
-            background: url("images/pop_bg.jpg") no-repeat;
-            font-family: 'Malgun Gothic', sans-serif;
-            position: relative;
-        }
-
-        .evt_pop_close {
-            position: absolute;
-            width: 47px;
-            height: 47px;
-            border: 0;
-            cursor: pointer;
-            top: 0;
-            right: 0;
-        }
-
-        .btn2 {
-            position: absolute;
-            width: 425px;
-            height: 85px;
-            left: 0;
-            right: 0;
-            margin: auto;
-            display: block;
-            background-color: rgba(255, 255, 255, 0);
-        }
-
-        .btn2:hover {
-            cursor: pointer;
-        }
-
-        .stop_dragging {
-            -ms-user-select: none;
-            -moz-user-select: -moz-none;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
+        .evt_pop { width: 480px; height: 350px; background: url("images/pop_bg.jpg") no-repeat; font-family: Malgun Gothic; position: relative; } 
+        .evt_pop_close { position: absolute; width: 47px; height: 47px; border: 0; cursor: pointer; top: 0; right: 0; } 
+    
+        .btn2 { position: absolute; width: 425px; height: 85px; left: 0; right: 0; margin: auto; display: block; background-color: rgba(255, 255, 255, 0); } 
+        .btn2:hover { cursor: pointer; } 
+        .stop_dragging { -ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; } 
     </style>
     <script>
-        $(function () {
+        $(document).ready(function(){
             // 게임 제목
             var title = "디아블로2 레더 4시즌"
 
-            // 접근성
+            // 웹접근성 - 배경이미지
             var accessibility = "디아블로2 레더 4시즌 이벤트 참여하면 쌀먹 필수템 쏜다! 꽝 없는 100 % 당첨 이벤트 거래 완료시 하루 최대 10장까지 응모권 지급! 판매 완료 시 응모권 1장 지급 구매 완료 시 응모권 2장 지급 상품 응모하기 상품안내 수수께끼, 샤코, 자룬, 베르룬 마일리지 1천원, 500마일리지, 할인쿠폰 1천원, 할인쿠폰 500원, 파워존 1시간"
             $('.evt_con .none').text(accessibility)
 
@@ -365,7 +103,9 @@
 
             // 이벤트기간
             var date = "2023.05.05 ~ 2023.06.01"
+            var dateColor = "#fff"
             $('.date')[0].childNodes[1].innerText = date
+            $('.date').css('color', dateColor)
 
             // 예약
             var checkTxtColor = "red"; //개인정보수집이용동의 텍스트 색상
@@ -382,7 +122,8 @@
             $('.evt_form_box > input').css('color', formInputColor)
             $('.evt_form_box > input').addClass('inputNum');
             $('head').append("<style>.evt_form_box .inputNum::placeholder {" + 'color:' + formInputColor + "}</style>");
-
+            
+            $('.evt_ico_check').css('background-color', checkboxBgColorBasic);
             $(".evt_form_check").click(function () {
                 var chk = $("#check_pi").is(":checked");//.attr('checked'); 
                 if (chk) {
@@ -422,9 +163,9 @@
                 $('head').append("<style>.notices:before {content: ''; position: absolute;top: 6px;left: 0;width: 4px; height: 4px;border-radius: 100%;" + 'background:' + noticeColor + "} + </style>");
             }
 
-            // 팝업
+            // 전문보기 팝업
             var popupNotice = "개인정보 수집 및 이용안내 (주)아이템베이는 이벤트 진행을 위해 아래와 같이 개인 정보 수집 및  취급 업무를 하며 본 목적 외 다른 목적으로 사용되지 않습니다. 개인정보의 수집 및 이용 수집 정보: 이동전화번호 수집 목적: 게임 출시 이벤트 알림 문자발송, 상품 제공 보유 기간: 이벤트 종료 직후 1개월 간 보관 후 삭제 이에 동의하지 않는 경우 개인정보 제공을 거절할 수 있으며,  이벤트 참여가 제한됩니다."
-            $('.evt_pop_wrap .blind').text(popupNotice)
+            $('.evt_pop_wrap .blind').text(popupNotice) // 웹접근성 - 팝업
 
             $('.evt_btn_info_view').click(function () {
                 $('.evt_pop_wrap').removeClass('hide');
