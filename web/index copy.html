@@ -116,18 +116,24 @@
                 }
 
                 // 바로가기 버튼 및 사전 예약 위치 설정
+                var imgss = $('.evt_bg img')    
                 $(window).on('load', function(){
                     // 사전예약 위치 설정
                     var prereservation = $('.evt_bg')[0].children[0].getAttribute('id')
                     var prereservationTop = $('#' + prereservation)[0].offsetTop + 425
                     $('.evt_box1_form').css('top', prereservationTop)
 
-                    // 바로가기 버튼 위치설정    
+                    // 바로가기 버튼 위치설정
+                    // var linkTo = $('.evt_bg')[0].children[imgss.length - 1].getAttribute('class')
+                    // var linkToTop = $('.' + linkTo)[0].offsetTop + 350
+                    // $('.btn2').css('top', linkToTop)
+
                     var findHaslink = $('.evt_bg')[0].childNodes
 
                     for(var i=0; i < findHaslink.length; i++){  
                         var linkBts = document.createElement('a')                      
                         if($(findHaslink[i]).hasClass('haslink')){
+                            //console.log($(findHaslink[i]).context.offsetTop + 350)
                             $('.linkzone').append(linkBts)
                             linkBts.setAttribute('class', 'btnCommon')
                             linkBts.setAttribute('id', 'btn' + i)
@@ -135,7 +141,12 @@
                             linkBts.setAttribute('title', '바로가기')
                             linkBts.setAttribute('href', bgs[i - 1].url)
                             var btsToTop = $(findHaslink[i]).context.offsetTop + 350
-                            $(linkBts).css('top', btsToTop)                            
+                            $(linkBts).css('top', btsToTop)
+
+                            // var linkBts = document.createElement('a')
+                            // var bts = linkBts.setAttribute('class', 'btn2' + i)
+                            // var btsToTop = $(findHaslink[i]).context.offsetTop + 350
+                            // $(linkBts).css('top', btsToTop)
                         }
                     }
                 });
@@ -186,6 +197,7 @@
                 "비정상적인 참여 및 악용 시 지급된 경품 회수, 거래 정지 등 불이익이 발생할 수 있습니다.",
                 "본 이벤트는 내부 사정에 따라 사전 고지 없이 변경 또는 조기종료될 수 있습니다."
             ]
+
             var noticeBg = '#010101'
             var noticeColor = "#fff"
             if (notice.length >= 1) {
@@ -194,6 +206,7 @@
                 for (var i = 0; i < notice.length; i++) {
                     var listLi = document.createElement("li")
                     document.querySelector('.list_notice').appendChild(listLi).innerText = notice[i].replace('$', '\n') //$가 있을경우 띄어쓰기로
+                    //$('.evt_list_notice').append("<li>" + li + "</li>")    
                     $('.tit_notice').css("color", noticeColor);
                     $('.evt_notice_wrap li').css("color", noticeColor);
                     $('.evt_notice_wrap li').addClass("notices");
@@ -216,7 +229,16 @@
             var footerBg = '#ccc'
             var footerColor = "#000"
             $('.evt_copyright').css("background-color", footerBg);
-            $('.evt_copyright p').css("color", footerColor);            
+            $('.evt_copyright p').css("color", footerColor);
+
+            // 바로가기 버튼 위치 설정
+            var linkUrl = "https://www.itembay.com/item/sell/itemSellList?iGameSeq=3954&iGameServerSeq=0&tiItemType=1"
+            if ($('.evt_footer')) {
+                // 바로가기 버튼 위치 설정
+                //var footerHeight = $('.evt_footer')[0].offsetHeight
+                //$('.btn2').css('bottom', footerHeight + 167)
+                $('.btn2').attr('href', linkUrl)
+            }     
         })
     </script>
 </head>
@@ -268,6 +290,7 @@
         </div>
 
         <!--바로가기-->
+        <!-- <a href="#" class="btn2" title="바로가기" target="_blank"></a> -->
         <div class="linkzone"></div>
 
         <!-- 유의사항 -->
