@@ -39,10 +39,10 @@
         .evt_form_input { flex: 1; height: 10vw; text-align: center; /* color: #131313; */ font-size: 3.7vw; } 
         .evt_form_box input::placeholder { /* color: #131313; */ font-size: 2.7vw; } 
         .evt_form_box input:-ms-input-placeholder { /* color: #131313; */ font-size: 2.7vw; } 
-        .evt_form { position: absolute; top: 15.7%; left: 13%; width: 74vw; text-align: center; } 
+        .evt_form { position: absolute; top: 16%; left: 13%; width: 74vw; text-align: center; } 
         .evt_form_check { display: inline-flex; align-items: center; } 
         .evt_ico_check { width: 2.5vw; height: 2.5vw; box-sizing: border-box; margin-right: 1vw; border: 1px solid #260c0c; } 
-        .evt_form_check input:checked~.evt_ico_check { background: #260c0c url('images/ico_check.png') no-repeat center; background-size: 80%; } 
+        .evt_form_check input:checked~.evt_ico_check { background: #260c0c url('images/ico_check_black.png') no-repeat center; background-size: 80%; } 
         .evt_txt_check { font-size: 2vw; color: #fff; } 
         .evt_btn_info_view { display: inline-block; vertical-align: middle; border-radius: 2px; text-align: center; margin-top: -1.5vw; margin-left: 1.3vw; font-size: 1.6vw; padding: 0.7vw 1.2vw; } 
         .evt_pop_wrap { display: none; position: absolute; top: 10%; left: 20%; width: 60%; z-index: 9997}
@@ -124,7 +124,7 @@
             var infoBoxColor = "#fff"; 
             var infoBoxBgColor = "#000"; //개인정보수집이용동의 전문보기 박스색상
             var checkboxBgColorBasic = "#fff"; //개인정보수집이용동의 체크박스 기본 색상
-            var checkboxBgColor = "red"; //개인정보수집이용동의 체크박스 변경 색상
+            var checkboxBgColor = "#fff"; //개인정보수집이용동의 체크박스 변경 색상
             var formInputColor = "#000"; //번호 입력 input 컬러 
 
             $('.evt_txt_check').css('color', checkTxtColor);
